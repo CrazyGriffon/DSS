@@ -49,9 +49,6 @@ def add(x, y):
 # загрузка модели
 cvNet, CLASSES = load_model()
 
-# получаем видео c наилучшего возможного качества с YouTube c помощью библиотеки pafy
-url = "https://www.youtube.com/watch?v=APiuutE4ac0"
-
 # цвет надписей на изображении
 COLOR = [0, 0, 0]
 # порог отбрасывания ложных срабатываний модели.Взят низким, чтобы для не очень хорошего качества видео максимально детектировать объект
@@ -87,6 +84,8 @@ sensor_y = sensor_diag * math.sin(angle)
 
 idx_of_plane = CLASSES.index("aeroplane")
 
+# получаем видео c наилучшего возможного качества с YouTube
+url = "https://www.youtube.com/watch?v=APiuutE4ac0"
 yt = YouTube(url)
 best = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
 
